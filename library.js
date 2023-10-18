@@ -36,6 +36,11 @@ function displayBooks(arr) {
   let i = 0;
   let length = arr.length;
   for(i=0; i < length; i++){
+    const card = document.createElement('div');
+    card.innerHTML = `<h5>${arr[i].title}</h5>
+    <br>${arr[i].author}
+    <br>${arr[i].pages}
+    <br>${arr[i].read}`
 
   }
 }
