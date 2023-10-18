@@ -57,3 +57,5 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#add-book').addEventListener('click', ()=> loadForm);
   document.querySelector('#submit-form').addEventListener('click', ()=> hideForm);
 });
+
+//event.preventDefault() needs to be added
