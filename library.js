@@ -3,9 +3,12 @@
 
 let myLibrary = [];
 
-function Book() {
+function Book(author, title, pages, read) {
   // the constructor...
-  // review constructors
+  this.author = author
+  this.tilte = title
+  this.pages = pages
+  this.read = read
 }
 
 function addBookToLibrary() {
