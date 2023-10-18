@@ -44,3 +44,16 @@ function displayBooks(arr) {
 
   }
 }
+
+function loadForm() {
+  document.querySelector('#book-form').style.display = 'block';
+}
+
+function hideForm() {
+  document.querySelector('#book-form').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#add-book').addEventListener('click', ()=> loadForm);
+  document.querySelector('#submit-form').addEventListener('click', ()=> hideForm);
+});
