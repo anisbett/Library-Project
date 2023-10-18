@@ -27,6 +27,7 @@ function addBookToLibrary() {
   }
 
   const book = new Book(author, title, pages, read);
+  myLibrary.push(book);
 
 
 }
