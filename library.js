@@ -15,3 +15,11 @@ function addBookToLibrary() {
   // do stuff here
   // research this
 }
+
+function displayBooks() {
+  let i = 0;
+  let length = myLibrary.length;
+  for(i=0; i < length; i++){
+    
+  }
+}
