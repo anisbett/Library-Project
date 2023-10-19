@@ -46,26 +46,27 @@ function addBook(event){
   let pages = document.querySelector('#pages').value;
   
   let radios = document.getElementsByName('answer');
-  let selectedValue = '';
+let selectedValue = '';
 
-      for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-          selectedValue = radios[i].value;
-          break;}}
+for (var i = 0; i < radios.length; i++) {
+  if (radios[i].checked) {
+    selectedValue = radios[i].value;
+    break;
+  }
+}
+console.log(selectedValue);
+let read = selectedValue === 'True';
+console.log('Read value:', read);
 
-  let read;
-  if (selectedValue === "true"){
-    read = true;
-  }
-  else {
-    read = false;
-  }
+
+ 
 
   const book = new Book(author, title, pages, read);
   myLibrary.push(book);
 
+  
   displayBooks(myLibrary)
-
+  hideForm();
 }
 
 function loadForm() {
@@ -74,6 +75,9 @@ function loadForm() {
 
 function hideForm() {
   document.querySelector('#book-form').style.display = 'none';
+
+  // Reset the form
+  document.querySelector('#book-form').reset();
 
   //Clear value fields
   document.querySelector('#author').value = '';
@@ -86,26 +90,29 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#book-form').style.display = 'none';
   document.getElementById('add-book').addEventListener('click', loadForm);
   document.querySelector('#submit-form').addEventListener('click', addBook);
-  document.querySelector('#submit-form').addEventListener('click', hideForm);
 
-  document.getElementById('book-form').addEventListener('submit', function (event) {
-  if (event.target.classList.contains('remove-button')) {
+document.getElementById('books-container').addEventListener('click', function (event) {
+  const target = event.target;
+
+  if (target.classList.contains('remove-button')) {
     // Get the index from the data-index attribute
-    var index = event.target.getAttribute('data-index');
+    var index = target.getAttribute('data-index');
 
     // Remove the book from the library array
     myLibrary.splice(index, 1);
 
     // Render the updated list of books
     displayBooks(myLibrary);
-  } else if (event.target.classList.contains('toggle-read-button')) {
+  } else if (target.classList.contains('toggle-read-button')) {
     // Toggle the read status of the book
-    var index = event.target.getAttribute('data-index');
+    var index = target.getAttribute('data-index');
     myLibrary[index].toggleReadStatus();
-    //Render the updated list of books
+    // Render the updated list of books
     displayBooks(myLibrary);
   }
 });
+
+
 
 });
 
