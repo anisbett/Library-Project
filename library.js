@@ -45,15 +45,49 @@ function displayBooks(arr) {
   }
 }
 
+function addBook(){
+  let author = document.querySelector('#author');
+  let title = document.querySelector('#title');
+  let pages = document.querySelector('#pages');
+  
+  let radios = document.getElementsByName('answer');
+  let selectedValue = '';
+
+      for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          selectedValue = radios[i].value;
+          break;}}
+
+  let read;
+  if (selectedValue === "True"){
+    read = true;
+  }
+  else {
+    read = false;
+  }
+
+  const book = new Book(author, title, pages, read);
+  myLibrary.push(book);
+
+}
+
 function loadForm() {
   document.querySelector('#book-form').style.display = 'block';
 }
 
 function hideForm() {
+  addBook();
   document.querySelector('#book-form').style.display = 'none';
+
+  //Clear value fields
+  document.querySelector('#author').value = '';
+  document.querySelector('#title').value = '';
+  document.querySelector('#pages').value = '';
+
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#book-form').style.display = 'none';
   document.querySelector('#add-book').addEventListener('click', ()=> loadForm);
   document.querySelector('#submit-form').addEventListener('click', ()=> hideForm);
 });
